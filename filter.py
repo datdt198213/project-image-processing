@@ -48,7 +48,7 @@ def mask_fourier(image):
     return mask
 
 
-def high_pass(image, method_type=FOURIER, label=GAUSSIAN, kernel=SHARPEN_MASK, sigma=15):
+def high_pass(image, method_type=CONVOLUTION, label=GAUSSIAN, kernel=SHARPEN_MASK, sigma=15):
     result = np.zeros_like(image)
     if method_type == CONVOLUTION:
         result = convolve(image, kernel)
@@ -71,7 +71,7 @@ def mask_mean(width, height):
     return result
 
 
-def low_pass(image, method_type=CONVOLUTION, label=GAUSSIAN, kernel=MEAN, sigma=15, width=None, height=None, ksize=3,
+def low_pass(image, method_type=CONVOLUTION, label=GAUSSIAN, kernel=MEAN, sigma=15, width=3, height=3, ksize=3,
              sigma_color=None):
     result = np.zeros_like(image)
     if method_type == CONVOLUTION:
